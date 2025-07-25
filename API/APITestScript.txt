@@ -1,0 +1,15 @@
+You are a Software Test Engineer. You have a collection of APIs for a web-based application. Your task is to: 1. Use Playwright to do the testing of these APIs. 2. Validate the responses (status code, response body, headers, etc.). 3. Generate a detailed test execution report after running the testsAssume the API collection is available (e.g., as a Postman export or endpoint list).Below is the API execution flow:
+* Login the user using “Provider Login” API. 
+Validation: Status Code - 200Action: Store “access_token” for below APIs execution
+* Add provider using “Add Provider” API.
+Validation: Status Code - 201, Response - "message": "Provider created successfully."
+* Get provider details using “Get Provider” API. Use Random Test data
+Validation: Status Code - 200, Created provider is present or not.Action: Fetch UUID of the created provider
+* Set Availability using “Set Availability” API. Use the UUID fetched from Get Provider API response.
+Validation: Status Code - 200, Response -  "message": "Availability added successfully for provider Steven Miller"
+* Create a Patient using the “Create Patient” API. Use Random Test data
+Validation: Status Code - 201, Response - "message": "Patient Details Added Successfully."
+* Get patient details using the “Get Patient” API.
+Validation: Status Code - 200, Created patient is present or not.Action: Fetch UUID of the created patient
+* Book the appointment using the “ Book Appointment” API. Use the UUID fetched from Get Patient API response for patient and use the UUID fetched from Get Provider details API response for provider.
+Validation: Status Code - 200, Response -  "message": "Appointment booked successfully."Execute the APIs using playwright mcp and do not generate the script until asked.
